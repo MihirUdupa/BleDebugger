@@ -54,6 +54,12 @@ const FontStyles = StyleSheet.create({
         color: '#333333', 
         padding: 2, 
         paddingBottom: 20
+    },
+    black_colour:{
+        backgroundColor:"#000"
+    },
+    redcolour:{
+        color:'#E83B20'
     }
 })
 

@@ -12,20 +12,20 @@ const TransactionScreen = (props) => {
     return (
         <View style={styles.container}>
             <View style={styles.headerTextView}>
-                <Text style={[FontStyles.Mainheading, FontStyles.slaboText, styles.mainHeadig]}>Connected to Device : {deviceName} </Text>
-                <Text style={[FontStyles.Mainheading, FontStyles.slaboText, styles.mainHeadig]}> Device Id - {id}</Text>
+                <Text style={[FontStyles.Mainheading, FontStyles.slaboText, styles.mainHeadig,styles.buttontext]}>Connected to Device : {deviceName} </Text>
+                <Text style={[FontStyles.Mainheading, FontStyles.slaboText, styles.mainHeadig,styles.buttontext]}> Device Id - {id}</Text>
                 <Divider />
             </View>
             <View style={styles.headerButtonsView}>
                 <View style={styles.buttonView}>
                     <TouchableOpacity style={styles.buttons} onPress={() => updateAction('Read')}>
-                        <Text style={FontStyles.buttonText}>Read Data</Text>
+                        <Text style={[FontStyles.buttonText, styles.buttontext]}>Read Data</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.buttons} onPress={() => updateAction('Config')}>
-                        <Text style={FontStyles.buttonText}>configure Data</Text>
+                        <Text style={[FontStyles.buttonText, styles.buttontext]}>Configure Data</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.buttons} onPress={() => updateAction('Write')}>
-                        <Text style={FontStyles.buttonText}>Write Data</Text>
+                        <Text style={[FontStyles.buttonText, styles.buttontext]}>Write Data</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -37,7 +37,7 @@ const TransactionScreen = (props) => {
                 <TouchableOpacity style={[styles.buttons]} onPress={() => {
                     props.op(props.id)
                 }}>
-                    <Text style={[FontStyles.buttonText, styles.TerminateText]}>Terminate connection</Text>
+                    <Text style={[FontStyles.buttonText, styles.TerminateText, styles.buttontext]}>Terminate connection</Text>
                 </TouchableOpacity>
             </View>
         </View>
@@ -46,7 +46,8 @@ const TransactionScreen = (props) => {
 
 const styles = StyleSheet.create({
     container:{
-        flex:1
+        flex:1,
+        backgroundColor:'#000'
     },
     headerTextView:{
         flex:0.1
@@ -69,7 +70,13 @@ const styles = StyleSheet.create({
     },
     buttons: {
         borderWidth: 1,
-        padding:'2%'
+        padding:'2%',
+        borderColor:'#E83B20',
+        shadowColor: '#E83B20',
+        elevation: 15,
+    },
+    buttontext:{
+        color:'#FC4827'
     },
     sendButtonView: {
         margin: '5%'

@@ -12,69 +12,69 @@ const Write = () => {
 
     return(
         <View>
-            <Text style={[FontStyles.subHeading,styles.subHeading]}>Start Testing the hoverBoard</Text>
+            <Text style={[FontStyles.subHeading,styles.subHeading, styles.buttontext]}>Start Testing the hoverBoard</Text>
             <View style={styles.childView}>
                 <View style={styles.buttonView}>
                     <View>
-                        <Text style={[FontStyles.paragraphRadio, FontStyles.paragraph1]}>Power : </Text>
+                        <Text style={[FontStyles.paragraphRadio, FontStyles.paragraph1,styles.buttontext]}>Power : </Text>
                     </View>
                     <View style={styles.buttonView}>
-                        <RadioButton value="On" status={Power === 'On' ? 'checked' : 'unchecked'} onPress={() => setPower('On')} />
-                        <Text style={[FontStyles.RadioText, FontStyles.slaboText,, styles.textView]}>On</Text>
-                        <RadioButton value="Off" status={Power === 'Off' ? 'checked' : 'unchecked'} onPress={() => setPower('Off')} />
-                        <Text style={[FontStyles.RadioText, FontStyles.slaboText,, styles.textView]}>Off</Text> 
+                        <RadioButton value="On" status={Power === 'On' ? 'checked' : 'unchecked'} color="#15F4EE" uncheckedColor="#15F4EE" onPress={() => setPower('On')} />
+                        <Text style={[FontStyles.RadioText, FontStyles.slaboText, styles.textView, styles.buttontext]}>On</Text>
+                        <RadioButton value="Off" status={Power === 'Off' ? 'checked' : 'unchecked'} color="#15F4EE" uncheckedColor="#15F4EE" onPress={() => setPower('Off')} />
+                        <Text style={[FontStyles.RadioText, FontStyles.slaboText, styles.textView, styles.buttontext]}>Off</Text> 
                     </View>
                 </View>
             </View>
             <View style={styles.childView}>
                 <View style={styles.buttonView}>
                     <View>
-                        <Text style={[FontStyles.paragraphRadio, FontStyles.paragraph1]}>Indicator(L) Status : </Text>
+                        <Text style={[FontStyles.paragraphRadio, FontStyles.paragraph1,styles.buttontext]}>Indicator(L) Status : </Text>
                     </View>
                     <View style={styles.buttonView}>
-                        <RadioButton value="On" status={IndicatorLeft === 'On' ? 'checked' : 'unchecked'} onPress={() => setIndicatorLeft('On')} />
-                        <Text style={[FontStyles.RadioText, FontStyles.slaboText,, styles.textView]}>On</Text>
-                        <RadioButton value="Off" status={IndicatorLeft === 'Off' ? 'checked' : 'unchecked'} onPress={() => setIndicatorLeft('Off')} />
-                        <Text style={[FontStyles.RadioText, FontStyles.slaboText,, styles.textView]}>Off</Text> 
+                        <RadioButton value="On" status={IndicatorLeft === 'On' ? 'checked' : 'unchecked'} color="#15F4EE" uncheckedColor="#15F4EE" onPress={() => setIndicatorLeft('On')} />
+                        <Text style={[FontStyles.RadioText, FontStyles.slaboText,, styles.textView, styles.buttontext]}>On</Text>
+                        <RadioButton value="Off" status={IndicatorLeft === 'Off' ? 'checked' : 'unchecked'} color="#15F4EE" uncheckedColor="#15F4EE" onPress={() => setIndicatorLeft('Off')} />
+                        <Text style={[FontStyles.RadioText, FontStyles.slaboText, styles.textView, styles.buttontext]}>Off</Text> 
                     </View>
                 </View>
             </View>
             <View style={styles.childView}>
                 <View style={styles.buttonView}>
                     <View>
-                        <Text style={[FontStyles.paragraphRadio, FontStyles.paragraph1]}>Indicator(R) Status : </Text>
+                        <Text style={[FontStyles.paragraphRadio, FontStyles.paragraph1, styles.buttontext]}>Indicator(R) Status : </Text>
                     </View>
                     <View style={styles.buttonView}>
-                        <RadioButton value="On" status={IndicatorRight === 'On' ? 'checked' : 'unchecked'} onPress={() => setIndicatorRight('On')} />
-                        <Text style={[FontStyles.RadioText, FontStyles.slaboText,, styles.textView]}>On</Text>
-                        <RadioButton value="Off" status={IndicatorRight === 'Off' ? 'checked' : 'unchecked'} onPress={() => setIndicatorRight('Off')} />
-                        <Text style={[FontStyles.RadioText, FontStyles.slaboText,, styles.textView]}>Off</Text> 
+                        <RadioButton value="On" status={IndicatorRight === 'On' ? 'checked' : 'unchecked'} color="#15F4EE" uncheckedColor="#15F4EE" onPress={() => setIndicatorRight('On')} />
+                        <Text style={[FontStyles.RadioText, FontStyles.slaboText,, styles.textView, styles.buttontext]}>On</Text>
+                        <RadioButton value="Off" status={IndicatorRight === 'Off' ? 'checked' : 'unchecked'} color="#15F4EE" uncheckedColor="#15F4EE" onPress={() => setIndicatorRight('Off')} />
+                        <Text style={[FontStyles.RadioText, FontStyles.slaboText,, styles.textView, styles.buttontext]}>Off</Text> 
                     </View>
                 </View>
             </View>
             <View style={styles.childView}>
                 <View style={styles.buttonView}>
                     <View>
-                        <Text style={[FontStyles.paragraphRadio, FontStyles.paragraph1]}>Headlamp status : </Text>
+                        <Text style={[FontStyles.paragraphRadio, FontStyles.paragraph1, styles.buttontext]}>Headlamp status : </Text>
                     </View>
                     <View style={styles.buttonView}>
-                        <RadioButton value="On" status={Headlamp === 'On' ? 'checked' : 'unchecked'} onPress={() => setHeadlamp('On')} />
-                        <Text style={[FontStyles.RadioText, FontStyles.slaboText,, styles.textView]}>On</Text>
-                        <RadioButton value="Off" status={Headlamp === 'Off' ? 'checked' : 'unchecked'} onPress={() => setHeadlamp('Off')} />
-                        <Text style={[FontStyles.RadioText, FontStyles.slaboText,, styles.textView]}>Off</Text> 
+                        <RadioButton value="On" status={Headlamp === 'On' ? 'checked' : 'unchecked'} color="#15F4EE" uncheckedColor="#15F4EE" onPress={() => setHeadlamp('On')} />
+                        <Text style={[FontStyles.RadioText, FontStyles.slaboText,, styles.textView, styles.buttontext]}>On</Text>
+                        <RadioButton value="Off" status={Headlamp === 'Off' ? 'checked' : 'unchecked'} color="#15F4EE" uncheckedColor="#15F4EE" onPress={() => setHeadlamp('Off')} />
+                        <Text style={[FontStyles.RadioText, FontStyles.slaboText,, styles.textView, styles.buttontext]}>Off</Text> 
                     </View>
                 </View>
             </View>
             <View style={styles.childView}>
                 <View style={styles.buttonView}>
                     <View>
-                        <Text style={[FontStyles.paragraphRadio, FontStyles.paragraph1]}>Buzzer : </Text>
+                        <Text style={[FontStyles.paragraphRadio, FontStyles.paragraph1, styles.buttontext]}>Buzzer : </Text>
                     </View>
                     <View style={styles.buttonView}>
-                        <RadioButton value="On" status={Buzzer === 'On' ? 'checked' : 'unchecked'} onPress={() => setBuzzer('On')} />
-                        <Text style={[FontStyles.RadioText, FontStyles.slaboText,, styles.textView]}>On</Text>
-                        <RadioButton value="Off" status={Buzzer === 'Off' ? 'checked' : 'unchecked'} onPress={() => setBuzzer('Off')} />
-                        <Text style={[FontStyles.RadioText, FontStyles.slaboText,, styles.textView]}>Off</Text> 
+                        <RadioButton value="On" status={Buzzer === 'On' ? 'checked' : 'unchecked'}  color="#15F4EE" uncheckedColor="#15F4EE" onPress={() => setBuzzer('On')} />
+                        <Text style={[FontStyles.RadioText, FontStyles.slaboText,, styles.textView, styles.buttontext]}>On</Text>
+                        <RadioButton value="Off" status={Buzzer === 'Off' ? 'checked' : 'unchecked'}  color="#15F4EE" uncheckedColor="#15F4EE" onPress={() => setBuzzer('Off')} />
+                        <Text style={[FontStyles.RadioText, FontStyles.slaboText,, styles.textView, styles.buttontext]}>Off</Text> 
                     </View>
                 </View>
             </View>
@@ -93,6 +93,9 @@ const styles = StyleSheet.create({
     buttons: {
         borderWidth: 1,
         padding: '2%'
+    },
+    buttontext:{
+        color:'#FC4827'
     },
     sendButtonView: {
         margin: '5%'

@@ -11,7 +11,9 @@ import {
   FlatList,
   TouchableHighlight,
   StyleSheet,
-  ToastAndroid
+  ToastAndroid,
+  Switch,
+  TouchableOpacity
 } from 'react-native';
 import BleManager from 'react-native-ble-manager';
 import {Divider} from "react-native-paper"
@@ -211,15 +213,15 @@ const Home = props => {
   const renderItem = (item, props) => {
     return (
       <>
-        <TouchableHighlight onPress={() => testPeripheral(item, props)}>
+        <TouchableHighlight onPress={() => testPeripheral(item, props)} style={[FontStyles.black_colour]}>
           <View>
-            <Text style={[FontStyles.slaboText, FontStyles.listItemName]}>
+            <Text style={[FontStyles.slaboText, FontStyles.listItemName,FontStyles.redcolour]}>
               {item.name}
             </Text>
-            <Text style={[FontStyles.slaboText, FontStyles.listItemRSSI]}>
+            <Text style={[FontStyles.slaboText, FontStyles.listItemRSSI,FontStyles.redcolour]}>
               RSSI: {item.rssi}
             </Text>
-            <Text style={[FontStyles.slaboText, FontStyles.listItemId]}>
+            <Text style={[FontStyles.slaboText, FontStyles.listItemId,FontStyles.redcolour]}>
               {item.id}
             </Text>
           </View>
@@ -235,14 +237,8 @@ const Home = props => {
         <TransactionScreen op={Disconnect} id={Id} name={DeviceName} />
       ) : (
         <>
-          <View>
-            <View>
-              <Button
-                title={'Scan Bluetooth (' + (isScanning ? 'on' : 'off') + ')'}
-                onPress={() => StartScan()}
-              />
-            </View>
-            <ScrollView
+          <View style={styles.body}>
+            {/* <ScrollView
               contentInsetAdjustmentBehavior="automatic"
               style={styles.scrollView}>
               {global.HermesInternal == null ? null : (
@@ -251,27 +247,45 @@ const Home = props => {
                 </View>
               )}
               <View>
-                <View>
-                  <Button
-                    title="Retrieve connected peripherals"
-                    onPress={() => retrieveConnected()}
-                  />
-                </View>
 
                 {list.length == 0 && (
                   <View style={{flex: 1, margin: 20}}>
-                    <Text style={{textAlign: 'center'}}>No peripherals</Text>
+                    <Text style={{textAlign: 'center',color:'#E83B20'}}>No peripherals</Text>
                   </View>
                 )}
               </View>
-            </ScrollView>
-            <View>
+            </ScrollView> */}
+            <View style={styles.flex}>
               <FlatList
                 data={list}
                 renderItem={({item}) => renderItem(item, props)}
                 keyExtractor={item => item.id}
               />
             </View>
+            <View styles={styles.background}>
+              <TouchableOpacity
+                onPress={() => StartScan()} style={styles.scanbtn}>
+                  {isScanning ? ( <Text style={styles.buttontext}>Scan Bluetooth(ON)</Text>) : (<Text style={styles.buttontext}>Scan Bluetooth(OFF)</Text>)} 
+            </TouchableOpacity>
+            </View>
+            <View>
+              <TouchableOpacity
+                onPress={() => StartScan()} style={styles.scanbtn}>
+                <Text style={styles.buttontext}>RETRIVE CONNECTED PERIPHERALS</Text>
+            </TouchableOpacity>
+            </View>
+            {/* <View>
+              <Button styles
+                title={'Scan Bluetooth (' + (isScanning ? 'on' : 'off') + ')'}
+                onPress={() => StartScan()}
+              />
+            </View>
+            <View>
+                  <Button
+                    title="Retrieve connected peripherals"
+                    onPress={() => retrieveConnected()}
+                  />
+                </View> */}
           </View>
         </>
       )}
@@ -282,14 +296,32 @@ const Home = props => {
 
 const styles = StyleSheet.create({
   scrollView: {
-    backgroundColor: '#FFF',
+    // backgroundColor: '#FFF',
+    backgroundColor:'#000',
+  },
+  flex:{
+    flex:0.9
+  },
+  background:{
+    backgroundColor:'#000',
+    flex:0.1
+  },
+  scanbtn:{
+    backgroundColor:'#E83B20',
+    alignContent:'center',
+    alignItems:'center',
+    margin:"1%",
+  },
+  buttontext:{
+    fontSize:20
   },
   engine: {
     position: 'absolute',
     right: 0,
   },
   body: {
-    flex:1
+    flex:1,
+    backgroundColor:'#000'
   },
   sectionContainer: {
     marginTop: 32,

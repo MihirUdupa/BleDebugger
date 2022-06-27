@@ -12,13 +12,16 @@ import {
   TouchableHighlight,
   StyleSheet,
   ToastAndroid,
+  Image,
   Switch,
   TouchableOpacity
 } from 'react-native';
+import Header from '../utils/header'
 import BleManager from 'react-native-ble-manager';
-import {Divider} from "react-native-paper"
+import {Divider,Menu,Provider} from "react-native-paper"
 import FontStyles from '../utils/fontsHelper';
 import TransactionScreen from './transaction';
+import Icon from 'react-native-vector-icons/Ionicons';
 const BleManagerModule = NativeModules.BleManager;
 const bleManagerEmitter = new NativeEventEmitter(BleManagerModule);
 
@@ -31,7 +34,12 @@ const Home = props => {
   const [CUUIDRead, setCUUIDR] = useState(''); // UUID for the Read Operation
   const [ConnectStatus, setConnectStatus] = useState(false); //setting the connect status
   const [Id, setId] = useState('');
-  const [DeviceName, setDeviceName] = useState('')
+  const [DeviceName, setDeviceName] = useState('');
+  const [visible, setVisible] = React.useState(false);
+
+  const openMenu = () => setVisible(true);
+
+  const closeMenu = () => setVisible(false);
 
   const StartScan = () => {
     BleManager.start()
@@ -214,7 +222,7 @@ const Home = props => {
     return (
       <>
         <TouchableHighlight onPress={() => testPeripheral(item, props)} style={[FontStyles.black_colour]}>
-          <View>
+            <View>
             <Text style={[FontStyles.slaboText, FontStyles.listItemName,FontStyles.redcolour]}>
               {item.name}
             </Text>
@@ -226,7 +234,7 @@ const Home = props => {
             </Text>
           </View>
         </TouchableHighlight>
-        <Divider />
+        <Divider/>
       </>
     );
   };
@@ -238,23 +246,33 @@ const Home = props => {
       ) : (
         <>
           <View style={styles.body}>
-            {/* <ScrollView
-              contentInsetAdjustmentBehavior="automatic"
-              style={styles.scrollView}>
-              {global.HermesInternal == null ? null : (
-                <View style={styles.engine}>
-                  <Text style={styles.footer}>Engine: Hermes</Text>
-                </View>
-              )}
+            <Header />
+            {/* <View style={styles.topheader}>
+              <View style={styles.topflexrow}>
               <View>
-
-                {list.length == 0 && (
-                  <View style={{flex: 1, margin: 20}}>
-                    <Text style={{textAlign: 'center',color:'#E83B20'}}>No peripherals</Text>
-                  </View>
-                )}
+              <Provider>
+                <View
+                  style={{
+                    paddingTop: 50,
+                    flexDirection: 'row',
+                    justifyContent: 'center',
+                  }}>
+                  <Menu
+                    visible={visible}
+                    onDismiss={closeMenu}
+                    anchor={<TouchableOpacity onPress={openMenu}><Icon name="menu" size={20} color="#E83B20" /></TouchableOpacity>}>
+                    <Menu.Item onPress={() => {closeMenu}} title="Help" />
+                    <Divider />
+                    <Menu.Item onPress={() => {closeMenu}} title="Logout" />
+                  </Menu>
+                </View>
+              </Provider>
               </View>
-            </ScrollView> */}
+              <View>
+                <Image source={require('../../assets/image2.png')} />
+              </View>
+              </View>
+            </View> */}
             <View style={styles.flex}>
               <FlatList
                 data={list}
@@ -270,22 +288,10 @@ const Home = props => {
             </View>
             <View>
               <TouchableOpacity
-                onPress={() => StartScan()} style={styles.scanbtn}>
+                onPress={() => StartScan()} style={styles.scanbtn2}>
                 <Text style={styles.buttontext}>RETRIVE CONNECTED PERIPHERALS</Text>
             </TouchableOpacity>
             </View>
-            {/* <View>
-              <Button styles
-                title={'Scan Bluetooth (' + (isScanning ? 'on' : 'off') + ')'}
-                onPress={() => StartScan()}
-              />
-            </View>
-            <View>
-                  <Button
-                    title="Retrieve connected peripherals"
-                    onPress={() => retrieveConnected()}
-                  />
-                </View> */}
           </View>
         </>
       )}
@@ -300,20 +306,44 @@ const styles = StyleSheet.create({
     backgroundColor:'#000',
   },
   flex:{
-    flex:0.9
+    flex:0.8
   },
   background:{
     backgroundColor:'#000',
-    flex:0.1
+    
   },
+  // topheader:{
+  //   alignContent:'center',
+  //   alignSelf:'center',
+  //   alignItems:'center',
+  //   flex:0.1,
+  // },
+  // topflexrow:{
+  //   flexDirection:"row"
+  // },
   scanbtn:{
-    backgroundColor:'#E83B20',
-    alignContent:'center',
+    backgroundColor:'#000',
+    borderWidth:3,
+    borderColor:'#E83B20', 
+    alignSelf:'center',
+    alignItems:'center',
+    width:'80%',
+    margin:"1%",
+    borderTopLeftRadius:20
+  },
+  scanbtn2:{
+    backgroundColor:'#000',
+    borderWidth:3,
+    borderColor:'#E83B20',
+    width:'80%',
+    alignSelf:'center',
     alignItems:'center',
     margin:"1%",
+    borderBottomRightRadius:20
   },
   buttontext:{
-    fontSize:20
+    fontSize:15,
+    color:'#E83B20'
   },
   engine: {
     position: 'absolute',

@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import Actoions from "./actions";
 import FontStyles from "../utils/fontsHelper";
 import {Divider} from "react-native-paper"
+import Header from '../utils/header'
 
 const TransactionScreen = (props) => {
     let deviceName = props.name
@@ -11,6 +12,7 @@ const TransactionScreen = (props) => {
     
     return (
         <View style={styles.container}>
+            <Header/>
             <View style={styles.headerTextView}>
                 <Text style={[FontStyles.Mainheading, FontStyles.slaboText, styles.mainHeadig,styles.buttontext]}>Connected to Device : {deviceName} </Text>
                 <Text style={[FontStyles.Mainheading, FontStyles.slaboText, styles.mainHeadig,styles.buttontext]}> Device Id - {id}</Text>
